@@ -1,1 +1,1 @@
-# sql-rest-api-ts
+# simple-sql-rest-api-ts
