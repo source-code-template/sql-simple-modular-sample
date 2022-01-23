@@ -33,6 +33,8 @@ export const env = {
     }
   },
   prod: {
-    log: false
+    middleware: {
+      log: false
+    }
   }
 };
