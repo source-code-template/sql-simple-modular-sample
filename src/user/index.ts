@@ -10,13 +10,13 @@ export class SqlUserRepository extends Repository<User, string> implements UserR
   }
 }
 export class UserManager extends Manager<User, string, UserFilter> implements UserService {
-  constructor(find: Search<User, UserFilter>, repository: UserRepository) {
-    super(find, repository);
+  constructor(search: Search<User, UserFilter>, repository: UserRepository) {
+    super(search, repository);
   }
 }
 export class UserController extends Controller<User, string, UserFilter> {
-  constructor(log: Log, userService: UserService) {
-    super(log, userService);
+  constructor(log: Log, service: UserService) {
+    super(log, service);
   }
 }
 
