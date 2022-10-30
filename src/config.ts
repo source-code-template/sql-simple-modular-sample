@@ -22,12 +22,7 @@ export const config = {
     size: 'size'
   },
   db: {
-    host: '127.0.0.1',
-    port: 3306,
-    user: 'root',
-    password: 'abcd1234',
-    database: 'masterdata',
-    multipleStatements: true,
+    connectionString: 'postgres://xkjofgbu:MKmT3B0PPIZ6pr057wEHFUMvtad5nXex@satao.db.elephantsql.com/xkjofgbu'
   }
 };
 
