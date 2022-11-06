@@ -20,7 +20,7 @@
     "logger-core": "^0.3.0",
     "onecore": "^0.0.43",
     "pg": "^8.8.0",
-    "pg-extension": "^0.1.13",
+    "pg-extension": "^0.1.16",
     "query-core": "^0.1.28",
     "types-validation": "^0.0.2",
     "xvalidators": "^0.0.8"
