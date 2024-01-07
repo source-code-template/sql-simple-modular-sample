@@ -22,7 +22,7 @@ export const config = {
     size: 'size'
   },
   db: {
-    connectionString: 'postgres://xkjofgbu:MKmT3B0PPIZ6pr057wEHFUMvtad5nXex@satao.db.elephantsql.com/xkjofgbu'
+    connectionString: 'postgres://postgres:abcd1234@localhost/masterdata'
   }
 };
 

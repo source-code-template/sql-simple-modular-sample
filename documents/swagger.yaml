@@ -40,7 +40,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserResult'
+                type: integer
         '400':
           description: Invalid user supplied
         '422':
@@ -48,13 +48,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Error'
         '409':
           description: Duplicate key error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DuplicateKeyError'
+                type: integer
         '500':
           description: Internal Server Error
   /users/{userId}:
@@ -109,7 +111,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserResult'
+                type: integer
         '400':
           description: Invalid user supplied
         '404':
@@ -117,19 +119,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundError'
+                type: integer
         '409':
           description: 'Version error: The version of updated user is different from database version'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VersionError'
+                type: integer
         '422':
           description: Validation errors
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Error'
         '500':
           description: Internal Server Error
     patch:
@@ -157,7 +161,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserResult'
+                type: integer
         '400':
           description: Invalid user supplied
         '404':
@@ -165,19 +169,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotFoundError'
+                type: integer
         '409':
           description: 'Version error: The version of updated user is different from database version'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VersionError'
+                type: integer
         '422':
           description: Validation errors
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Error'
         '500':
           description: Internal Server Error
     delete:
@@ -332,40 +338,11 @@ components:
           type: string
           description: error field
           example: 'username'
-    ValidationError:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: '4: validation error'
-          example: 4
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    NotFoundError:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: '0: not found'
-          example: 0
-    DuplicateKeyError:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: '0: duplicate key error'
-          example: 0
-    VersionError:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: '2: version error'
-          example: 2
     User:
       type: object
+      required:
+        - username
+        - phone
       properties:
         id:
           type: string
@@ -383,15 +360,6 @@ components:
           type: string
           format: 'date-time'
           example: '1974-11-16T00:00:00+07:00'
-    UserResult:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: '1: success'
-          example: 1
-        value:
-          $ref: '#/components/schemas/User'
     UserFilter:
       type: object
       properties:
