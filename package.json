@@ -7,8 +7,7 @@
     "start": "nodemon --exec ts-node-dev src/app",
     "build": "webpack --config webpack.config.js",
     "prod": "node dist/app",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint -c .eslintrc.js --ext .ts src"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -28,9 +27,6 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/pg": "^8.11.10",
-    "@typescript-eslint/eslint-plugin": "^8.6.0",
-    "@typescript-eslint/parser": "^8.6.0",
-    "eslint": "^9.11.0",
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
     "ts-loader": "^9.5.1",
