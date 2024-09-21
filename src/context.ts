@@ -1,11 +1,4 @@
-import {
-  HealthController,
-  LogController,
-  Logger,
-  Middleware,
-  MiddlewareController,
-  resources,
-} from "express-ext"
+import { HealthController, LogController, Logger, Middleware, MiddlewareController, resources } from "express-ext"
 import { createChecker, DB } from "query-core"
 import { check } from "types-validation"
 import { createValidator } from "xvalidators"
