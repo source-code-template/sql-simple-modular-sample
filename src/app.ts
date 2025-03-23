@@ -11,17 +11,17 @@ import { useContext } from "./context"
 import { route } from "./route"
 
 dotenv.config()
-const conf = merge(config, process.env, env, process.env.ENV)
+const cfg = merge(config, process.env, env, process.env.ENV)
 
 const app = express()
-const logger = createLogger(conf.log)
-const middleware = new MiddlewareLogger(logger.info, conf.middleware)
-app.use(allow(conf.allow), json(), middleware.log)
+const logger = createLogger(cfg.log)
+const middleware = new MiddlewareLogger(logger.info, cfg.middleware)
+app.use(allow(cfg.allow), json(), middleware.log)
 
-const pool = new Pool(conf.db)
+const pool = new Pool(cfg.db)
 const db = new PoolManager(pool)
 const ctx = useContext(db, logger, middleware)
 route(app, ctx)
-http.createServer(app).listen(conf.port, () => {
-  console.log("Start server at port " + conf.port)
+http.createServer(app).listen(cfg.port, () => {
+  console.log("Start server at port " + cfg.port)
 })

@@ -14,6 +14,7 @@ export interface User {
   phone?: string
   dateOfBirth?: Date
 }
+
 export interface UserRepository extends Repository<User, string> {}
 export interface UserService extends Service<User, string, UserFilter> {}
 

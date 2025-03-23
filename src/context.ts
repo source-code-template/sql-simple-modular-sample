@@ -13,6 +13,7 @@ export interface ApplicationContext {
   middleware: MiddlewareController
   user: UserController
 }
+
 export function useContext(db: DB, logger: Logger, midLogger: Middleware): ApplicationContext {
   const log = new LogController(logger)
   const middleware = new MiddlewareController(midLogger)
