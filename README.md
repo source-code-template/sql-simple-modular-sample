@@ -14,6 +14,29 @@ Builds the app for production to the `dist` folder.
 
 Runs the app for production in the `dist` folder.
 
+### Build the Docker Image
+
+```shell
+docker build -t sql-simple-modular-sample .
+```
+
+### Test the Docker Image
+
+```shell
+docker run -p 8080:8080 sql-simple-modular-sample
+```
+
+### Deploy to Cloud Run
+
+```shell
+gcloud run deploy mongo-simple-service \
+--image us-central1-docker.pkg.dev/<your-project-id>/node-repo/mongo-simple-modular-sample \
+--platform managed \
+--region us-central1 \
+--allow-unauthenticated \
+--port 8080 \
+```
+
 ## Architecture
 
 ### Architecture
