@@ -1,5 +1,5 @@
 import { Controller } from "express-ext"
-import { Log, Manager, Search } from "onecore"
+import { Log, Search, UseCase } from "onecore"
 import { DB, Repository, SearchBuilder } from "query-core"
 import { User, UserFilter, userModel, UserRepository, UserService } from "./user"
 export * from "./user"
@@ -9,7 +9,7 @@ export class SqlUserRepository extends Repository<User, string> implements UserR
     super(db, "users", userModel)
   }
 }
-export class UserManager extends Manager<User, string, UserFilter> implements UserService {
+export class UserUseCase extends UseCase<User, string, UserFilter> implements UserService {
   constructor(search: Search<User, UserFilter>, repository: UserRepository) {
     super(search, repository)
   }
@@ -20,11 +20,9 @@ export class UserController extends Controller<User, string, UserFilter> {
   }
 }
 
-export function useUserService(db: DB): UserService {
+export function useUserController(log: Log, db: DB): UserController {
   const builder = new SearchBuilder<User, UserFilter>(db.query, "users", userModel, db.driver)
   const repository = new SqlUserRepository(db)
-  return new UserManager(builder.search, repository)
-}
-export function useUserController(log: Log, db: DB): UserController {
-  return new UserController(log, useUserService(db))
+  const service = new UserUseCase(builder.search, repository)
+  return new UserController(log, service)
 }
