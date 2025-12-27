@@ -17,10 +17,10 @@
     "express": "^4.21.2",
     "express-ext": "^0.4.8",
     "logger-core": "^0.3.1",
-    "onecore": "^0.1.7",
+    "onecore": "0.5.0",
     "pg": "^8.14.1",
     "pg-extension": "^0.2.3",
-    "query-core": "^0.2.5",
+    "query-core": "0.5.0",
     "types-validation": "^0.0.2",
     "xvalidators": "^0.5.14"
   },
