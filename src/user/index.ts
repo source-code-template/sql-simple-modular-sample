@@ -6,7 +6,7 @@ export * from "./controller"
 
 export class SqlUserRepository extends Repository<User, string, UserFilter> implements UserRepository {
   constructor(db: DB) {
-    super(db, "users", userModel, db.driver)
+    super(db, "users", userModel)
   }
 }
 export class UserUseCase extends UseCase<User, string, UserFilter> implements UserService {

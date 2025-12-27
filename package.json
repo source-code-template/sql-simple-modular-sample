@@ -20,7 +20,7 @@
     "onecore": "0.5.0",
     "pg": "^8.14.1",
     "pg-extension": "^0.2.3",
-    "query-core": "0.5.0",
+    "query-core": "0.5.1",
     "types-validation": "^0.0.2",
     "xvalidators": "^0.5.14"
   },
