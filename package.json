@@ -17,12 +17,12 @@
     "express": "^4.21.2",
     "express-ext": "^0.4.8",
     "logger-core": "^0.3.1",
-    "onecore": "0.5.0",
+    "onecore": "^0.5.2",
     "pg": "^8.14.1",
     "pg-extension": "^0.2.3",
-    "query-core": "0.5.1",
+    "query-core": "^0.5.1",
     "types-validation": "^0.0.2",
-    "xvalidators": "^0.5.14"
+    "xvalidators": "^0.5.15"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
