@@ -26,13 +26,13 @@ export class UserController {
   }
   async load(req: Request, res: Response) {
     const id = req.params.id
-    this.service
-      .load(id)
-      .then((user) => {
-        const status = user ? 200 : 404
-        res.status(status).json(user).end()
-      })
-      .catch((err) => handleError(err, res, this.log))
+    try {
+      const user = await this.service.load(id)
+      const status = user ? 200 : 404
+      res.status(status).json(user).end()
+    } catch (err) {
+      handleError(err, res, this.log)
+    }
   }
   create(req: Request, res: Response) {
     const resource = getResource(req)
