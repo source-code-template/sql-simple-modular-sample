@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { format, fromRequest, getStatusCode, handleError, queryLimit, queryPage } from "express-ext"
+import { format, fromRequest, getStatusCode, handleError } from "express-ext"
 import { isSuccessful, Log } from "onecore"
 import { validate } from "xvalidators"
 import { getResource } from "../resources"
@@ -15,24 +15,22 @@ export class UserController {
     this.delete = this.delete.bind(this)
   }
   search(req: Request, res: Response) {
-    const filter = fromRequest<UserFilter>(req, ["status", "fields"])
+    const filter = fromRequest<UserFilter>(req, ["fields"])
     format(filter, ["dateOfBirth"])
-    const page = queryPage(req, filter)
-    const limit = queryLimit(req)
     this.service
-      .search(filter, limit, page, filter.fields)
+      .search(filter, filter.limit, filter.page, filter.fields)
       .then((result) => res.status(200).json(result))
       .catch((err) => handleError(err, res, this.log))
   }
-  async load(req: Request, res: Response) {
+  load(req: Request, res: Response) {
     const id = req.params.id
-    try {
-      const user = await this.service.load(id)
-      const status = user ? 200 : 404
-      res.status(status).json(user).end()
-    } catch (err) {
-      handleError(err, res, this.log)
-    }
+    this.service
+      .load(id)
+      .then((user) => {
+        const status = user ? 200 : 404
+        res.status(status).json(user).end()
+      })
+      .catch((err) => handleError(err, res, this.log))
   }
   create(req: Request, res: Response) {
     const resource = getResource(req)
@@ -49,7 +47,7 @@ export class UserController {
       })
       .catch((err) => handleError(err, res, this.log))
   }
-  async update(req: Request, res: Response) {
+  update(req: Request, res: Response) {
     const resource = getResource(req)
     const user = req.body as User
     user.id = req.params.id
@@ -57,13 +55,13 @@ export class UserController {
     if (errors.length > 0) {
       return res.status(getStatusCode(errors)).json(errors).end()
     }
-    try {
-      const result = await this.service.update(user)
-      const status = isSuccessful(result) ? 200 : 404
-      res.status(status).json(result).end()
-    } catch (err) {
-      handleError(err, res, this.log)
-    }
+    this.service
+      .update(user)
+      .then((result) => {
+        const status = isSuccessful(result) ? 200 : 404
+        res.status(status).json(result).end()
+      })
+      .catch((err) => handleError(err, res, this.log))
   }
   patch(req: Request, res: Response) {
     const resource = getResource(req)
