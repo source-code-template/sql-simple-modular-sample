@@ -17,13 +17,14 @@ export class UserController {
   search(req: Request, res: Response) {
     const filter = fromRequest<UserFilter>(req, ["fields"])
     format(filter, ["dateOfBirth"])
+    const { limit, page, fields } = filter
     this.service
-      .search(filter, filter.limit, filter.page, filter.fields)
+      .search(filter, limit, page, fields)
       .then((result) => res.status(200).json(result))
       .catch((err) => handleError(err, res, this.log))
   }
   load(req: Request, res: Response) {
-    const id = req.params.id
+    const id = req.params.id as string
     this.service
       .load(id)
       .then((user) => {
@@ -50,7 +51,7 @@ export class UserController {
   update(req: Request, res: Response) {
     const resource = getResource(req)
     const user = req.body as User
-    user.id = req.params.id
+    user.id = req.params.id as string
     const errors = validate<User>(user, userModel, resource)
     if (errors.length > 0) {
       return res.status(getStatusCode(errors)).json(errors).end()
@@ -66,7 +67,7 @@ export class UserController {
   patch(req: Request, res: Response) {
     const resource = getResource(req)
     const user = req.body as User
-    user.id = req.params.id
+    user.id = req.params.id as string
     const errors = validate<User>(user, userModel, resource, false, true)
     if (errors.length > 0) {
       return res.status(getStatusCode(errors)).json(errors).end()
@@ -80,7 +81,7 @@ export class UserController {
       .catch((err) => handleError(err, res, this.log))
   }
   delete(req: Request, res: Response) {
-    const id = req.params.id
+    const id = req.params.id as string
     this.service
       .delete(id)
       .then((count) => {
