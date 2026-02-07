@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import { format, fromRequest, getStatusCode, handleError } from "express-ext"
-import { isSuccessful, Log } from "onecore"
+import { format, fromRequest, getStatusCode, handleError, isSuccessful } from "express-ext"
+import { Log } from "onecore"
 import { validate } from "xvalidators"
 import { getResource } from "../resources"
 import { User, UserFilter, userModel, UserService } from "./user"
