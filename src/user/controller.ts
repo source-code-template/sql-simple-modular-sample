@@ -1,12 +1,11 @@
 import { Request, Response } from "express"
 import { format, fromRequest, getStatusCode, handleError, isSuccessful } from "express-ext"
-import { Log } from "onecore"
 import { validate } from "xvalidators"
 import { getResource } from "../resources"
 import { User, UserFilter, userModel, UserService } from "./user"
 
 export class UserController {
-  constructor(protected service: UserService, protected log: Log) {
+  constructor(protected service: UserService) {
     this.search = this.search.bind(this)
     this.load = this.load.bind(this)
     this.create = this.create.bind(this)
@@ -21,7 +20,7 @@ export class UserController {
     this.service
       .search(filter, limit, page, fields)
       .then((result) => res.status(200).json(result))
-      .catch((err) => handleError(err, res, this.log))
+      .catch((err) => handleError(err, res))
   }
   load(req: Request, res: Response) {
     const id = req.params.id as string
@@ -31,7 +30,7 @@ export class UserController {
         const status = user ? 200 : 404
         res.status(status).json(user).end()
       })
-      .catch((err) => handleError(err, res, this.log))
+      .catch((err) => handleError(err, res))
   }
   create(req: Request, res: Response) {
     const resource = getResource(req)
@@ -46,7 +45,7 @@ export class UserController {
         const status = isSuccessful(result) ? 201 : 409
         res.status(status).json(result).end()
       })
-      .catch((err) => handleError(err, res, this.log))
+      .catch((err) => handleError(err, res))
   }
   update(req: Request, res: Response) {
     const resource = getResource(req)
@@ -62,7 +61,7 @@ export class UserController {
         const status = isSuccessful(result) ? 200 : 404
         res.status(status).json(result).end()
       })
-      .catch((err) => handleError(err, res, this.log))
+      .catch((err) => handleError(err, res))
   }
   patch(req: Request, res: Response) {
     const resource = getResource(req)
@@ -78,7 +77,7 @@ export class UserController {
         const status = isSuccessful(result) ? 200 : 404
         res.status(status).json(result).end()
       })
-      .catch((err) => handleError(err, res, this.log))
+      .catch((err) => handleError(err, res))
   }
   delete(req: Request, res: Response) {
     const id = req.params.id as string
@@ -88,6 +87,6 @@ export class UserController {
         const status = count > 0 ? 200 : 410
         res.status(status).json(count).end()
       })
-      .catch((err) => handleError(err, res, this.log))
+      .catch((err) => handleError(err, res))
   }
 }

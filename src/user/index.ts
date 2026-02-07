@@ -1,4 +1,4 @@
-import { Log, UseCase } from "onecore"
+import { UseCase } from "onecore"
 import { DB, Repository } from "query-core"
 import { UserController } from "./controller"
 import { User, UserFilter, userModel, UserRepository, UserService } from "./user"
@@ -16,8 +16,8 @@ export class UserUseCase extends UseCase<User, string, UserFilter> implements Us
   }
 }
 
-export function useUserController(db: DB, log: Log): UserController {
+export function useUserController(db: DB): UserController {
   const repository = new SqlUserRepository(db)
   const service = new UserUseCase(repository)
-  return new UserController(service, log)
+  return new UserController(service)
 }
