@@ -13,14 +13,16 @@ export class UserController {
     this.patch = this.patch.bind(this)
     this.delete = this.delete.bind(this)
   }
-  search(req: Request, res: Response) {
+  async search(req: Request, res: Response) {
     const filter = fromRequest<UserFilter>(req, ["fields"])
     format(filter, ["dateOfBirth"])
     const { limit, page, fields } = filter
-    this.service
-      .search(filter, limit, page, fields)
-      .then((result) => res.status(200).json(result))
-      .catch((err) => handleError(err, res))
+    try {
+      const result = await this.service.search(filter, limit, page, fields)
+      res.status(200).json(result)
+    } catch (err) {
+      handleError(err, res)
+    }
   }
   async load(req: Request, res: Response) {
     const id = req.params.id as string
