@@ -17,7 +17,7 @@
     "express": "^5.2.1",
     "express-ext": "^0.6.0",
     "logger-core": "^0.3.1",
-    "onecore": "^0.5.7",
+    "onecore": "^0.5.8",
     "pg": "^8.18.0",
     "pg-extension": "^0.3.4",
     "query-core": "^0.6.5",
