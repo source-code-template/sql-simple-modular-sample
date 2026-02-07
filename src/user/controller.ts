@@ -22,32 +22,32 @@ export class UserController {
       .then((result) => res.status(200).json(result))
       .catch((err) => handleError(err, res))
   }
-  load(req: Request, res: Response) {
+  async load(req: Request, res: Response) {
     const id = req.params.id as string
-    this.service
-      .load(id)
-      .then((user) => {
-        const status = user ? 200 : 404
-        res.status(status).json(user).end()
-      })
-      .catch((err) => handleError(err, res))
+    try {
+      const user = await this.service.load(id)
+      const status = user ? 200 : 404
+      res.status(status).json(user)
+    } catch (err) {
+      handleError(err, res)
+    }
   }
-  create(req: Request, res: Response) {
+  async create(req: Request, res: Response) {
     const resource = getResource(req)
     const user = req.body as User
     const errors = validate<User>(user, userModel, resource)
     if (errors.length > 0) {
       return res.status(getStatusCode(errors)).json(errors).end()
     }
-    this.service
-      .create(user)
-      .then((result) => {
-        const status = isSuccessful(result) ? 201 : 409
-        res.status(status).json(result).end()
-      })
-      .catch((err) => handleError(err, res))
+    try {
+      const result = await this.service.create(user)
+      const status = isSuccessful(result) ? 201 : 409
+      res.status(status).json(result).end()
+    } catch (err) {
+      handleError(err, res)
+    }
   }
-  update(req: Request, res: Response) {
+  async update(req: Request, res: Response) {
     const resource = getResource(req)
     const user = req.body as User
     user.id = req.params.id as string
@@ -55,15 +55,15 @@ export class UserController {
     if (errors.length > 0) {
       return res.status(getStatusCode(errors)).json(errors).end()
     }
-    this.service
-      .update(user)
-      .then((result) => {
-        const status = isSuccessful(result) ? 200 : 404
-        res.status(status).json(result).end()
-      })
-      .catch((err) => handleError(err, res))
+    try {
+      const result = await this.service.update(user)
+      const status = isSuccessful(result) ? 200 : 404
+      res.status(status).json(result).end()
+    } catch (err) {
+      handleError(err, res)
+    }
   }
-  patch(req: Request, res: Response) {
+  async patch(req: Request, res: Response) {
     const resource = getResource(req)
     const user = req.body as User
     user.id = req.params.id as string
@@ -71,22 +71,22 @@ export class UserController {
     if (errors.length > 0) {
       return res.status(getStatusCode(errors)).json(errors).end()
     }
-    this.service
-      .patch(user)
-      .then((result) => {
-        const status = isSuccessful(result) ? 200 : 404
-        res.status(status).json(result).end()
-      })
-      .catch((err) => handleError(err, res))
+    try {
+      const result = await this.service.patch(user)
+      const status = isSuccessful(result) ? 200 : 404
+      res.status(status).json(result).end()
+    } catch (err) {
+      handleError(err, res)
+    }
   }
-  delete(req: Request, res: Response) {
+  async delete(req: Request, res: Response) {
     const id = req.params.id as string
-    this.service
-      .delete(id)
-      .then((count) => {
-        const status = count > 0 ? 200 : 410
-        res.status(status).json(count).end()
-      })
-      .catch((err) => handleError(err, res))
+    try {
+      const count = await this.service.delete(id)
+      const status = count > 0 ? 200 : 410
+      res.status(status).json(count).end()
+    } catch (err) {
+      handleError(err, res)
+    }
   }
 }
