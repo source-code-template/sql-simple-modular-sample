@@ -5,16 +5,15 @@
     "target": "es6",
     "rootDir": "./src",
     "outDir": "./es6",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "strict": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "ignoreDeprecations": "6.0"
+    "emitDecoratorMetadata": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
