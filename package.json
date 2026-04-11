@@ -13,7 +13,7 @@
   "author": "",
   "dependencies": {
     "config-plus": "^0.0.4",
-    "dotenv": "^17.4.0",
+    "dotenv": "^17.4.1",
     "express": "^5.2.1",
     "express-ext": "^0.6.1",
     "logger-core": "^0.3.1",
@@ -31,7 +31,7 @@
     "ts-loader": "^9.5.7",
     "ts-node-dev": "^2.0.0",
     "typescript": "^6.0.2",
-    "webpack": "^5.105.4",
+    "webpack": "^5.106.1",
     "webpack-bundle-analyzer": "^5.3.0",
     "webpack-cli": "^7.0.2",
     "webpack-dev-server": "^5.2.3"
