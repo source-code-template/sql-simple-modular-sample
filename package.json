@@ -15,14 +15,14 @@
     "config-plus": "^0.0.4",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "express-ext": "^0.6.3",
+    "express-core-web": "^0.1.2",
     "logger-core": "^0.3.1",
     "onecore": "^0.5.10",
     "pg": "^8.20.0",
     "pg-extension": "^0.3.6",
     "sql-core": "^0.1.1",
     "types-validation": "^0.0.2",
-    "xvalidators": "^0.5.19"
+    "validation-core": "^1.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
