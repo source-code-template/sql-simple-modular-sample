@@ -17,7 +17,7 @@
     "express": "^5.2.1",
     "express-core-web": "^0.1.5",
     "logger-core": "^0.3.1",
-    "onecore": "^0.5.14",
+    "onecore": "^0.5.15",
     "pg": "^8.21.0",
     "pg-extension": "^0.3.8",
     "sql-core": "^0.1.3",
