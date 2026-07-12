@@ -26,10 +26,10 @@ export const config = {
   },
 }
 
-export const env = {
+export const environments = {
   sit: {
     db: {
-      database: "masterdata_sit",
+      connectionString: "postgres://postgres:abcd1234@localhost/masterdata_sit",
     },
   },
   prd: {

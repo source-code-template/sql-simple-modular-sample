@@ -6,12 +6,12 @@ import http from "http"
 import { createLogger } from "logger-core"
 import { Pool } from "pg"
 import { PoolManager } from "pg-extension"
-import { config, env } from "./config"
+import { config, environments } from "./config"
 import { useContext } from "./context"
 import { route } from "./route"
 
 dotenv.config()
-const cfg = merge(config, process.env, env, process.env.ENV)
+const cfg = merge(config, process.env, environments, process.env.ENV)
 
 const app = express()
 const logger = createLogger(cfg.log)
