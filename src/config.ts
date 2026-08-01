@@ -27,6 +27,11 @@ export const config = {
 }
 
 export const environments = {
+  dev: {
+    log: {
+      level: "debug",
+    },
+  },
   sit: {
     db: {
       connectionString: "postgres://postgres:abcd1234@localhost/masterdata_sit",
