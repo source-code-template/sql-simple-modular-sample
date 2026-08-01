@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 import express, { json } from "express"
 import { allow, MiddlewareLogger } from "express-core-web"
 import http from "http"
-import { createLogger, map, updateLog } from "logger-core"
+import { createLogger, updateLog } from "logger-core"
 import { Pool } from "pg"
 import { PoolManager } from "pg-extension"
 import { config, environments } from "./config"
@@ -14,7 +14,7 @@ const logger = createLogger(config.log)
 
 dotenv.config()
 const cfg = merge(config, process.env, environments, process.env.ENV, logger.error, logger.info)
-updateLog(logger, cfg.log, map)
+updateLog(logger, cfg.log)
 
 const app = express()
 const middleware = new MiddlewareLogger(logger.info, cfg.middleware)
