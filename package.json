@@ -15,7 +15,7 @@
     "config-plus": "^0.1.1",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "express-core-web": "^0.1.5",
+    "express-web-kit": "^0.0.3",
     "logger-core": "^0.5.2",
     "middleware-logging": "^0.1.0",
     "onecore": "^0.6.2",

@@ -1,4 +1,4 @@
-import { HealthController, resources } from "express-core-web"
+import { HealthController, resources } from "express-web-kit"
 import { Middleware, MiddlewareController } from "middleware-logging"
 import { createChecker, DB } from "sql-core"
 import { check } from "types-validation"

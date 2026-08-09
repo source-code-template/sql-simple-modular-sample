@@ -1,7 +1,7 @@
 import { merge } from "config-plus"
 import dotenv from "dotenv"
 import express, { json, Request } from "express"
-import { allow, toString } from "express-core-web"
+import { allow, toString } from "express-web-kit"
 import http from "http"
 import { createLogger, updateLog } from "logger-core"
 import { mask, MiddlewareLogger, SimpleMap } from "middleware-logging"
