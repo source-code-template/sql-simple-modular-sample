@@ -451,7 +451,6 @@ This sample demonstrates how several [**core-ts**](https://github.com/core-ts) l
 | [`onecore`](https://www.npmjs.com/package/onecore)                       | Generic CRUD use cases and common abstractions        |
 | [`sql-core`](https://www.npmjs.com/package/sql-core)                     | Generic SQL repositories and data access abstractions |
 | [`postgres-kit`](https://www.npmjs.com/package/postgres-kit)             | PostgreSQL adapter for sql-core                       |
-| [`health-service`](https://www.npmjs.com/package/health-service)         | Health endpoint                                       |
 | [`logger-core`](https://www.npmjs.com/package/logger-core)               | Structured logging                                    |
 | [`config-plus`](https://www.npmjs.com/package/config-plus)               | Configuration management                              |
 
