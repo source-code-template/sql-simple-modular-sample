@@ -5,7 +5,6 @@ import { userModel } from "./user"
 
 export function route(app: Application, ctx: ApplicationContext): void {
   app.get("/health", ctx.health.check)
-  app.patch("/log", ctx.log.config)
   app.patch("/middleware", ctx.middleware.config)
 
   const checkUser = check(userModel)

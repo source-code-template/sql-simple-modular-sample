@@ -1,4 +1,5 @@
-import { HealthController, LogController, Logger, Middleware, MiddlewareController, resources } from "express-core-web"
+import { HealthController, resources } from "express-core-web"
+import { Middleware, MiddlewareController } from "middleware-logging"
 import { createChecker, DB } from "sql-core"
 import { check } from "types-validation"
 import { createValidator } from "validation-core"
@@ -9,18 +10,16 @@ resources.check = check
 
 export interface ApplicationContext {
   health: HealthController
-  log: LogController
   middleware: MiddlewareController
   user: UserController
 }
 
-export function useContext(db: DB, logger: Logger, midLogger: Middleware): ApplicationContext {
-  const log = new LogController(logger)
+export function useContext(db: DB, midLogger: Middleware): ApplicationContext {
   const middleware = new MiddlewareController(midLogger)
   const sqlChecker = createChecker(db)
   const health = new HealthController([sqlChecker])
 
   const user = useUserController(db)
 
-  return { health, log, middleware, user }
+  return { health, middleware, user }
 }
