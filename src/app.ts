@@ -46,6 +46,9 @@ function encryptResponse(rs: string): string {
     if (body["phone"]) {
       body["phone"] = mask(body["phone"], 2, 2, "*")
     }
+    if (body["email"]) {
+      body["email"] = mask(body["email"], 2, 2, "*")
+    }
     return JSON.stringify(body)
   } catch (err) {
     logger.error("Failed to encrypt response: " + toString(err))
@@ -56,6 +59,9 @@ function encryptRequest(body: any): string {
   if (typeof body === "object") {
     if (body["phone"]) {
       body["phone"] = mask(body["phone"], 2, 2, "*")
+    }
+    if (body["email"]) {
+      body["email"] = mask(body["email"], 2, 2, "*")
     }
   }
   return JSON.stringify(body)
