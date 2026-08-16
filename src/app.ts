@@ -6,7 +6,6 @@ import http from "http"
 import { createLogger, updateLog } from "logger-core"
 import { mask, MiddlewareLogger, SimpleMap } from "middleware-logging"
 import { Pool } from "pg"
-import { PoolManager } from "postgres-kit"
 import { config, environments } from "./config"
 import { useContext } from "./context"
 import { route } from "./route"
@@ -22,8 +21,7 @@ const middleware = new MiddlewareLogger(logger.info, cfg.middleware, buildHeader
 app.use(allow(cfg.allow), json(), middleware.log)
 
 const pool = new Pool(cfg.db)
-const db = new PoolManager(pool)
-const ctx = useContext(db, middleware)
+const ctx = useContext(pool, middleware)
 route(app, ctx)
 http.createServer(app).listen(cfg.port, () => {
   console.log("Start server at port " + cfg.port)
