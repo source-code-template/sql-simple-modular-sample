@@ -20,8 +20,8 @@
     "logger-core": "^0.5.2",
     "middleware-logging": "^0.1.0",
     "onecore": "^0.6.2",
-    "pg": "^8.22.0",
-    "postgres-kit": "^0.0.3",
+    "pg": "^8.23.0",
+    "postgres-kit": "^0.0.5",
     "sql-core": "^0.1.5",
     "types-validation": "^0.0.2",
     "validation-core": "^1.1.1"
