@@ -19,10 +19,10 @@
     "express-web-kit": "^0.0.6",
     "logger-core": "^0.5.3",
     "middleware-logging": "^0.1.1",
-    "onecore": "^0.6.9",
+    "onecore": "^0.6.12",
     "pg": "^8.23.1",
     "postgres-kit": "^0.0.8",
-    "sql-core": "^0.1.11",
+    "sql-core": "^0.1.12",
     "types-validation": "^0.0.2",
     "validation-core": "^1.1.1"
   },
